@@ -1,0 +1,30 @@
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    steps = 0   # Counter for steps
+
+    while low <= high:
+        steps += 1   # Count each loop iteration
+
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid, steps
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1, steps
+
+
+arr = [35, 42, 50, 61, 78, 85, 90]
+target = 78
+
+result, steps = binary_search(arr, target)
+
+if result != -1:
+    print(f"\nElement found at index {result}")
+else:
+    print("\nElement not found")
+
+print(f"Total steps taken: {steps}")
